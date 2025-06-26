@@ -1,0 +1,47 @@
+.card {
+  position: relative;
+  width: 220px;
+  height: 300px;
+  border: 1px solid #f3f3f3;
+  border-radius: 40px;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px 0 rgba(0, 0, 0, 0.05);
+  }
+  &__item {
+    position: absolute;
+    top: -20px;
+    padding: 29px 28px 34px 30px;
+    button {
+      position: relative;
+      z-index: 2;
+      background-color: #fff;
+    }
+  }
+  &__descr {
+    > p {
+      min-height: 60px;
+      margin-bottom: 14px;
+    }
+  }
+  &__picture {
+    object-fit: contain;
+    width: 133px;
+    height: 112px;
+    margin-bottom: 14px;
+  }
+  &__cost {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__price {
+    p {
+      font-weight: 500;
+      font-size: 11px;
+      color: #bdbdbd;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+  }
+}

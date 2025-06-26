@@ -1,0 +1,49 @@
+.wrap-btn {
+  text-align: center;
+}
+.btn {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  border-radius: 18px;
+  background-color: #9dd458;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  img {
+    position: absolute;
+    top: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  &.order {
+    img {
+      right: 35px;
+      transform: none;
+    }
+    &:hover {
+      background-color: #a2db5c;
+      img {
+        transform: translateX(5px);
+      }
+    }
+  }
+
+  &.back,
+  &.page-empty {
+    width: 80%;
+    img {
+      left: 25px;
+      transform: rotate(180deg);
+    }
+    &:hover {
+      background-color: #a2db5c;
+      img {
+        transform: rotate(180deg) translateX(5px);
+      }
+    }
+  }
+  &.page-empty {
+    width: 30%;
+  }
+}

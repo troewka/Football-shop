@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px 40px;
+  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 40px;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    img {
+      width: 60px;
+      height: 60px;
+      margin-right: 15px;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    p {
+      color: #9d9d9d;
+    }
+  }
+  &__menu {
+    display: flex;
+    gap: 0 30px;
+    li:nth-child(1) {
+      color: #5c5c5c;
+      font-weight: 600;
+    }
+  }
+}
