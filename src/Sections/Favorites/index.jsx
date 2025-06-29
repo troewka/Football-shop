@@ -23,7 +23,6 @@ const Favorite = ({ favorite, onAddToCart, onAddToFavorite }) => {
                   key={index}
                   onAddToCart={(obj) => onAddToCart(obj)}
                   onAddToFavorite={(obj) => onAddToFavorite(obj)}
-                  checkFavorite={true}
                   {...items}
                 />
               );

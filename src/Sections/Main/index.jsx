@@ -5,13 +5,13 @@ import Card from "../../Components/Card";
 import "./styles.scss";
 
 const Main = ({
+  product,
+  loading,
+  onAddToCart,
+  onAddToFavorite,
   searchInput,
   setSearchInput,
   onSearchInputValue,
-  product,
-  onAddToCart,
-  onAddToFavorite,
-  loading,
 }) => {
   const renderItems = () => {
     const prodFilter = product.filter((item) =>

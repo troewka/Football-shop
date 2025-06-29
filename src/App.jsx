@@ -40,7 +40,7 @@ function App() {
 
   const onAddToCart = async (obj) => {
     const findItem = cartItems.find((item) => item.parentId === obj.id);
-    console.log(findItem);
+
     try {
       if (findItem) {
         setCartItems((prev) => prev.filter((prod) => prod.parentId !== obj.id));
@@ -60,18 +60,22 @@ function App() {
   };
 
   const onAddToFavorite = async (obj) => {
+    const findItem = favoriteItems.find((item) => item.parentId === obj.id);
     try {
-      if (favoriteItems.find((items) => items.id === obj.id)) {
+      if (findItem) {
         axios.delete(
-          `https://6855002b6a6ef0ed6630d873.mockapi.io/favorite/${obj.id}`
+          `https://6855002b6a6ef0ed6630d873.mockapi.io/favorite/${findItem.id}`
         );
-        setFavoriteItems((prev) => prev.filter((item) => item.id !== obj.id));
+        setFavoriteItems((prev) =>
+          prev.filter((item) => item.parentId !== obj.id)
+        );
       } else {
         const { data } = await axios.post(
           "https://6855002b6a6ef0ed6630d873.mockapi.io/favorite",
           obj
         );
         setFavoriteItems((prev) => [...prev, data]);
+        console.log(favoriteItems);
       }
     } catch (error) {
       alert(`Произошла ошыбка ${error} при добавлении в Закладки`);
@@ -87,13 +91,24 @@ function App() {
     setSearchInput(event.target.value);
   };
 
-  const onAddedCart = (id) => {
+  const onCheckAddedToCart = (id) => {
     return cartItems.some((obj) => obj.parentId === id);
+  };
+
+  const onCheckAddedToFavorites = (id) => {
+    return favoriteItems.some((obj) => obj.parentId === id);
   };
 
   return (
     <AppContext.Provider
-      value={{ product, cartItems, setCartItems, favoriteItems, onAddedCart }}
+      value={{
+        product,
+        cartItems,
+        setCartItems,
+        favoriteItems,
+        onCheckAddedToCart,
+        onCheckAddedToFavorites,
+      }}
     >
       <div className="app">
         <div className="container">
@@ -108,7 +123,6 @@ function App() {
           <Route path="/" exact>
             <Main
               product={product}
-              cartItems={cartItems}
               loading={loading}
               onAddToCart={onAddToCart}
               onAddToFavorite={onAddToFavorite}

@@ -10,11 +10,12 @@ const Card = ({
   price,
   onAddToCart,
   onAddToFavorite,
-  checkFavorite = false,
+
   loading,
 }) => {
-  const { onAddedCart } = useContext(AppContext);
-  const [favorite, setFavorite] = useState(checkFavorite);
+  const { onCheckAddedToCart, onCheckAddedToFavorites } =
+    useContext(AppContext);
+  //const [favorite, setFavorite] = useState(checkFavorite);
   const cardObj = { id, parentId: id, imgUrl, title, price };
 
   const onClickAdd = () => {
@@ -23,7 +24,7 @@ const Card = ({
 
   const onClickFavorite = () => {
     onAddToFavorite(cardObj);
-    setFavorite(!favorite);
+    //setFavorite(!favorite);
   };
   return (
     <div className="card">
@@ -48,7 +49,7 @@ const Card = ({
             <button onClick={onClickFavorite}>
               <img
                 src={
-                  favorite
+                  onCheckAddedToFavorites(id)
                     ? "/image/icons/liked.svg"
                     : "/image/icons/unliked.svg"
                 }
@@ -69,7 +70,7 @@ const Card = ({
                 <button onClick={onClickAdd}>
                   <img
                     src={
-                      onAddedCart(id)
+                      onCheckAddedToCart(id)
                         ? "/image/icons/done.svg"
                         : "/image/icons/plus.svg"
                     }
